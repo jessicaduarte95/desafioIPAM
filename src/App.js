@@ -1,9 +1,8 @@
-
+import React from'react';
+import { Principal } from './Page/Principal'
 
 export const  App = () => {
   return (
-    <div className="App">
-      <p>Teste</p>
-    </div>
+    <Principal/>
   );
 }
