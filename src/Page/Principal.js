@@ -1,6 +1,7 @@
-import React from'react';
+import React, { useEffect, useState } from'react';
 import './Principal.css'
 import { Grid, Typography} from "@mui/material";
+import Axios from 'axios';
 
 export const  Principal = () => {
 
@@ -73,6 +74,19 @@ export const  Principal = () => {
         color: "white",
     }
 
+    const [ufs, setUfs] = useState([]);
+
+    useEffect(() => {
+        Axios.get("https://servicodados.ibge.gov.br/api/v1/localidades/estados")
+        .then((response) => {
+            console.log(response.data);
+            setUfs(response.data)
+        })
+        .catch((error) => {
+            console.log(error);
+        })
+    }, [])
+
   return (
     <Grid  container style={containerStyle}>
         <Grid item sm={12} style={titlePrincipal}>
@@ -93,17 +107,17 @@ export const  Principal = () => {
                     style={{marginLeft: "0.8rem"}}>
                     <Grid style={{width: '45%'}}>
                         <Typography style={titleEstadoMunicipio}>Estado</Typography>
-                        <select name="select" style={selectEstadoMunicipio}>
-                            <option></option>
-                            <option value="valor1">Valor 1</option>
-                            <option value="valor2">Valor 2</option>
-                            <option value="valor3">Valor 3</option>
+                        <select name="uf" id="uf" style={selectEstadoMunicipio}>
+                            <option value="0"></option>
+                            {ufs.map(uf => (
+                                <option key={uf.id} value={uf.id}>{uf.nome}</option>
+                            ))}
                         </select>
                     </Grid>
                     <Grid style={{width: '45%'}}>
                         <Typography style={titleEstadoMunicipio}>Município</Typography>
                         <select name="select" style={selectEstadoMunicipio}>
-                            <option></option>
+                            <option value="0"></option>
                             <option value="valor1">Valor 1</option>
                             <option value="valor2">Valor 2</option>
                             <option value="valor3">Valor 3</option>
