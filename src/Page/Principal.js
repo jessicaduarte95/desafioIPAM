@@ -2,6 +2,8 @@ import React, { useEffect, useState } from'react';
 import './Principal.css'
 import { Grid, Typography} from "@mui/material";
 import Axios from 'axios';
+import { useSelector, useDispatch } from 'react-redux';
+import { Municipios } from '../Store/Municipios/municipios.actions';
 
 export const  Principal = () => {
 
@@ -74,18 +76,49 @@ export const  Principal = () => {
         color: "white",
     }
 
+    const dispatch = useDispatch()
+    const municipiosRelacionados = useSelector(state => state.municipios);
     const [ufs, setUfs] = useState([]);
+    const [cidade, setCidades] = useState([]);
+    const [disabledSelect, setDisabledSelect] = useState(true);
+    const [ufSelecionada, setUfSelecionada] = useState("");
+    const ufAlterada = (event) => {
+        document.getElementById("uf")
+        console.log(event)
+        setUfSelecionada(event)
+        // setDisabledSelect(false);
+    }
+
+    const municipiosAssociados = async () => {
+        await Axios.get(`https://servicodados.ibge.gov.br/api/v1/localidades/estados/${ufSelecionada}/municipios`)
+        .then((response) => {
+            setCidades(response.data)
+        })
+        .catch((error) => {
+            console.log(error);
+        });
+        setDisabledSelect(false);
+    }
 
     useEffect(() => {
         Axios.get("https://servicodados.ibge.gov.br/api/v1/localidades/estados")
         .then((response) => {
-            console.log(response.data);
             setUfs(response.data)
         })
         .catch((error) => {
             console.log(error);
+        });
+    }, []);
+
+    useEffect(() => {
+        Axios.get(`https://servicodados.ibge.gov.br/api/v1/localidades/estados/${ufSelecionada}/municipios`)
+        .then((response) => {
+            setCidades(response.data)
         })
-    }, [])
+        .catch((error) => {
+            console.log(error);
+        });
+    },[ufSelecionada]);
 
   return (
     <Grid  container style={containerStyle}>
@@ -107,25 +140,25 @@ export const  Principal = () => {
                     style={{marginLeft: "0.8rem"}}>
                     <Grid style={{width: '45%'}}>
                         <Typography style={titleEstadoMunicipio}>Estado</Typography>
-                        <select name="uf" id="uf" style={selectEstadoMunicipio}>
+                        <select name="uf" id="uf" style={selectEstadoMunicipio}  onChange={(e) => ufAlterada(e.target.value)}>
                             <option value="0"></option>
                             {ufs.map(uf => (
-                                <option key={uf.id} value={uf.id}>{uf.nome}</option>
+                                <option key={uf.id} value={uf.sigla}>{uf.nome}</option>
                             ))}
                         </select>
                     </Grid>
                     <Grid style={{width: '45%'}}>
                         <Typography style={titleEstadoMunicipio}>Município</Typography>
-                        <select name="select" style={selectEstadoMunicipio}>
+                        <select name="select" style={selectEstadoMunicipio} id="municipio" disabled={disabledSelect == true ? true: false}>
                             <option value="0"></option>
-                            <option value="valor1">Valor 1</option>
-                            <option value="valor2">Valor 2</option>
-                            <option value="valor3">Valor 3</option>
+                            {Array.isArray(municipiosRelacionados) ? municipiosRelacionados.map(municipio => (
+                                 <option value={municipio} key={municipio}>{municipio}</option>
+                            )): []}
                         </select>
                     </Grid>
                 </Grid>
                 <Grid item style={buttonConsultar}>
-                    <button style={button}>Consultar</button>
+                    <button style={button} onClick={() => { municipiosAssociados(); dispatch(Municipios(cidade))}}>Consultar Município</button>
                 </Grid>
             </Grid>
         </Grid>

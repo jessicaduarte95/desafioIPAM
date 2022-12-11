@@ -1,6 +1,7 @@
-export function DataEstados (a,b) {
+export function Municipios (municipios) {
+    
     return{
-        type: 'DataEstados',
-        payload: [a,b]
+        type: 'Municipios_Relacionados',
+        payload:  municipios
     }
 };
