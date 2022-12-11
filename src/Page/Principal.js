@@ -84,11 +84,9 @@ export const  Principal = () => {
     const [ufSelecionada, setUfSelecionada] = useState("");
     const ufAlterada = (event) => {
         document.getElementById("uf")
-        console.log(event)
         setUfSelecionada(event)
-        // setDisabledSelect(false);
     }
-
+    
     const municipiosAssociados = async () => {
         await Axios.get(`https://servicodados.ibge.gov.br/api/v1/localidades/estados/${ufSelecionada}/municipios`)
         .then((response) => {
@@ -110,16 +108,6 @@ export const  Principal = () => {
         });
     }, []);
 
-    useEffect(() => {
-        Axios.get(`https://servicodados.ibge.gov.br/api/v1/localidades/estados/${ufSelecionada}/municipios`)
-        .then((response) => {
-            setCidades(response.data)
-        })
-        .catch((error) => {
-            console.log(error);
-        });
-    },[ufSelecionada]);
-
   return (
     <Grid  container style={containerStyle}>
         <Grid item sm={12} style={titlePrincipal}>
@@ -140,7 +128,7 @@ export const  Principal = () => {
                     style={{marginLeft: "0.8rem"}}>
                     <Grid style={{width: '45%'}}>
                         <Typography style={titleEstadoMunicipio}>Estado</Typography>
-                        <select name="uf" id="uf" style={selectEstadoMunicipio}  onChange={(e) => ufAlterada(e.target.value)}>
+                        <select name="uf" id="uf" style={selectEstadoMunicipio}  onChange={(e) => ufAlterada(e.target.value)} onClick={() => {municipiosAssociados(); dispatch(Municipios(cidade))}}>
                             <option value="0"></option>
                             {ufs.map(uf => (
                                 <option key={uf.id} value={uf.sigla}>{uf.nome}</option>
@@ -149,7 +137,7 @@ export const  Principal = () => {
                     </Grid>
                     <Grid style={{width: '45%'}}>
                         <Typography style={titleEstadoMunicipio}>Município</Typography>
-                        <select name="select" style={selectEstadoMunicipio} id="municipio" disabled={disabledSelect == true ? true: false}>
+                        <select name="select" style={selectEstadoMunicipio} id="municipio" disabled={disabledSelect == true ? true: false}  onClick={() => {dispatch(Municipios(cidade))}}>
                             <option value="0"></option>
                             {Array.isArray(municipiosRelacionados) ? municipiosRelacionados.map(municipio => (
                                  <option value={municipio} key={municipio}>{municipio}</option>
@@ -158,7 +146,7 @@ export const  Principal = () => {
                     </Grid>
                 </Grid>
                 <Grid item style={buttonConsultar}>
-                    <button style={button} onClick={() => { municipiosAssociados(); dispatch(Municipios(cidade))}}>Consultar Município</button>
+                    <button style={button}>Consultar</button>
                 </Grid>
             </Grid>
         </Grid>
