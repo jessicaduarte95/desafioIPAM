@@ -30,6 +30,7 @@ const titleDados = {
 const styleDados = {
     height: "10%",
     marginLeft: "2%",
+    color: "#474747"
 };
 
 const button = {
