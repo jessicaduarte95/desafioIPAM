@@ -4,6 +4,7 @@ import { Grid, Typography} from "@mui/material";
 import Axios from 'axios';
 import { useSelector, useDispatch } from 'react-redux';
 import { Municipios } from '../Store/Municipios/municipios.actions';
+import { Dados } from './Modal'
 
 export const  Principal = () => {
 
@@ -82,6 +83,9 @@ export const  Principal = () => {
     const [cidade, setCidades] = useState([]);
     const [disabledSelect, setDisabledSelect] = useState(true);
     const [ufSelecionada, setUfSelecionada] = useState("");
+    const [openModal, setOpenModal] = useState(false);
+    const handleOpenModal = () => setOpenModal(true);
+    const handleCloseModal = () => setOpenModal(false);
     const ufAlterada = (event) => {
         document.getElementById("uf")
         setUfSelecionada(event)
@@ -146,10 +150,11 @@ export const  Principal = () => {
                     </Grid>
                 </Grid>
                 <Grid item style={buttonConsultar}>
-                    <button style={button}>Consultar</button>
+                    <button style={button} onClick={handleOpenModal}>Consultar</button>
                 </Grid>
             </Grid>
         </Grid>
+        <Dados open={openModal} handleClose={handleCloseModal}/>
     </Grid>
   );
 }
