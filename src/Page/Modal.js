@@ -68,7 +68,7 @@ export const Dados = (props) => {
                 <Typography style={styleDados}>Microrregião: </Typography>
                 <Typography style={styleDados}>Mesorregião: </Typography>
                 <Typography style={styleDados}>UF: </Typography>
-                <Typography style={styleDados}>Região do Município: </Typography>
+                <Typography style={styleDados}>Região: </Typography>
             </Grid>
             <Grid 
                 item 
