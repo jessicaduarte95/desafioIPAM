@@ -7,7 +7,7 @@ export default function (state="undefined", action) {
         for(i = 0; i < action.payload.length; i++) {
             arrayMunicipios.push(action.payload[i].nome);
         }
-        console.log("Array: ", arrayMunicipios)
+        // console.log("Array: ", arrayMunicipios)
         return arrayMunicipios;
     }
 
