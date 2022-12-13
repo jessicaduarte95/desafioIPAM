@@ -43,7 +43,7 @@ const button = {
 };
 
 export const Dados = (props) => {
-    const { open, handleClose } = props;
+    const { open, handleClose, municipioEscolhidoDados } = props;
 
   return (
     <div>
@@ -65,10 +65,10 @@ export const Dados = (props) => {
                 justifyContent="space-around"
                 style={{height: "60%"}}
                 >
-                <Typography style={styleDados}>Microrregião: </Typography>
-                <Typography style={styleDados}>Mesorregião: </Typography>
-                <Typography style={styleDados}>UF: </Typography>
-                <Typography style={styleDados}>Região: </Typography>
+                <Typography style={styleDados}>Microrregião: {municipioEscolhidoDados[0]}</Typography>
+                <Typography style={styleDados}>Mesorregião: {municipioEscolhidoDados[1]}</Typography>
+                <Typography style={styleDados}>UF: {municipioEscolhidoDados[2]}</Typography>
+                <Typography style={styleDados}>Região: {municipioEscolhidoDados[3]}</Typography>
             </Grid>
             <Grid 
                 item 

@@ -10,10 +10,7 @@ export default function (state="undefined", action) {
             const object = new Object();
             object.id = action.payload[i].id;
             object.nome = action.payload[i].nome;
-            console.log("Teste", action.payload[i].nome)
             arrayMunicipios.push(object);
-
-            console.log("Array: ", object)
         }
         return arrayMunicipios;
     }

@@ -159,7 +159,7 @@ export const  Principal = () => {
                     </Grid>
                     <Grid style={{width: '45%'}}>
                         <Typography style={titleEstadoMunicipio}>Município</Typography>
-                        <select name="municipio" style={selectEstadoMunicipio} id="municipio" onChange={(e) => municipioAlterado(e.target.value)} disabled={disabledSelect === true ? true: false}  onClick={() => {dispatch(Municipios(cidade)); dispatch(MunicipiosDados(municipioSelecionado))}}>
+                        <select name="municipio" style={selectEstadoMunicipio} id="municipio" onChange={(e) => municipioAlterado(e.target.value)} disabled={disabledSelect === true ? true: false}  onClick={() => {dispatch(Municipios(cidade)); municipioSelecionadoDados()}}>
                             <option value="0"></option>
                             {Array.isArray(municipiosRelacionados) ? municipiosRelacionados.map(municipio => (
                                 <option value={municipio.id} key={municipio.id}>{municipio.nome}</option>
@@ -168,11 +168,11 @@ export const  Principal = () => {
                     </Grid>
                 </Grid>
                 <Grid item style={buttonConsultar}>
-                    <button style={button} onClick={() => {handleOpenModal(); municipioSelecionadoDados()}}>Consultar {municipioEscolhidoDados}</button>
+                    <button style={button} onClick={() => {handleOpenModal(); dispatch(MunicipiosDados(dadosSelecionado))}}>Consultar</button>
                 </Grid>
             </Grid>
         </Grid>
-        <Dados open={openModal} handleClose={handleCloseModal}/>
+        <Dados open={openModal} handleClose={handleCloseModal} municipioEscolhidoDados={municipioEscolhidoDados}/>
     </Grid>
   );
 }
