@@ -85,7 +85,8 @@ export const  Principal = () => {
     const [cidade, setCidades] = useState([]);
     const [disabledSelect, setDisabledSelect] = useState(true);
     const [ufSelecionada, setUfSelecionada] = useState("");
-    const [municipioSelecionada, setMunicipioSelecionada] = useState("");
+    const [municipioSelecionado, setmunicipioSelecionado] = useState("");
+    const [dadosSelecionado, setDadosMunicipio] = useState("");
     const [openModal, setOpenModal] = useState(false);
     const handleOpenModal = () => setOpenModal(true);
     const handleCloseModal = () => setOpenModal(false);
@@ -95,7 +96,17 @@ export const  Principal = () => {
     }
     const municipioAlterado = (event) => {
         document.getElementById("municipio")
-        setMunicipioSelecionada(event)
+        setmunicipioSelecionado(event)
+    }
+
+    const municipioSelecionadoDados = async () => {
+        await Axios.get(`https://servicodados.ibge.gov.br/api/v1/localidades/municipios/${municipioSelecionado}/distritos`)
+        .then((response) => {
+            setDadosMunicipio(response.data)
+        })
+        .catch((error) => {
+            console.log(error);
+        });
     }
     
     const municipiosAssociados = async () => {
@@ -148,16 +159,16 @@ export const  Principal = () => {
                     </Grid>
                     <Grid style={{width: '45%'}}>
                         <Typography style={titleEstadoMunicipio}>Município</Typography>
-                        <select name="municipio" style={selectEstadoMunicipio} id="municipio" onChange={(e) => municipioAlterado(e.target.value)} disabled={disabledSelect === true ? true: false}  onClick={() => {dispatch(Municipios(cidade)); dispatch(MunicipiosDados(municipioSelecionada))}}>
+                        <select name="municipio" style={selectEstadoMunicipio} id="municipio" onChange={(e) => municipioAlterado(e.target.value)} disabled={disabledSelect === true ? true: false}  onClick={() => {dispatch(Municipios(cidade)); dispatch(MunicipiosDados(municipioSelecionado))}}>
                             <option value="0"></option>
                             {Array.isArray(municipiosRelacionados) ? municipiosRelacionados.map(municipio => (
-                                <option value={municipio.nome} key={municipio.id}>{municipio.nome}</option>
+                                <option value={municipio.id} key={municipio.id}>{municipio.nome}</option>
                             )): []}
                         </select>
                     </Grid>
                 </Grid>
                 <Grid item style={buttonConsultar}>
-                    <button style={button} onClick={handleOpenModal}>Consultar {municipioEscolhidoDados}</button>
+                    <button style={button} onClick={() => {handleOpenModal(); municipioSelecionadoDados()}}>Consultar {municipioEscolhidoDados}</button>
                 </Grid>
             </Grid>
         </Grid>
