@@ -55,7 +55,7 @@ export const Dados = (props) => {
       >
         <Box sx={style}>
           <Typography style={titleDados}>
-            Dados do Município
+            Dados do Município {municipioEscolhidoDados[4]}
           </Typography>
           <Grid container>
             <Grid 

@@ -7,7 +7,8 @@ export default function (state="undefined", action) {
         arrayDados.push( action.payload[0].municipio.microrregiao.mesorregiao.nome)
         arrayDados.push( action.payload[0].municipio.microrregiao.mesorregiao.UF.nome)
         arrayDados.push( action.payload[0].municipio.microrregiao.mesorregiao.UF.regiao.nome)
-
+        arrayDados.push( action.payload[0].nome)
+        
         return arrayDados
     }
 
