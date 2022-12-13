@@ -148,10 +148,10 @@ export const  Principal = () => {
                     </Grid>
                     <Grid style={{width: '45%'}}>
                         <Typography style={titleEstadoMunicipio}>Município</Typography>
-                        <select name="select" style={selectEstadoMunicipio} id="municipio" onChange={(e) => municipioAlterado(e.target.value)} disabled={disabledSelect === true ? true: false}  onClick={() => {dispatch(Municipios(cidade)); dispatch(MunicipiosDados(municipioSelecionada))}}>
+                        <select name="municipio" style={selectEstadoMunicipio} id="municipio" onChange={(e) => municipioAlterado(e.target.value)} disabled={disabledSelect === true ? true: false}  onClick={() => {dispatch(Municipios(cidade)); dispatch(MunicipiosDados(municipioSelecionada))}}>
                             <option value="0"></option>
                             {Array.isArray(municipiosRelacionados) ? municipiosRelacionados.map(municipio => (
-                                 <option value={municipio} key={municipio}>{municipio}</option>
+                                <option value={municipio.nome} key={municipio.id}>{municipio.nome}</option>
                             )): []}
                         </select>
                     </Grid>

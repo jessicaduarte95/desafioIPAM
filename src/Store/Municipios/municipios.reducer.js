@@ -1,13 +1,20 @@
 export default function (state="undefined", action) {
-
-    const arrayMunicipios = [] 
     
     const municipiosAssociados = () => {
+        
+        const arrayMunicipios = [] 
         var i = 0;
+
         for(i = 0; i < action.payload.length; i++) {
-            arrayMunicipios.push(action.payload[i].nome);
+            
+            const object = new Object();
+            object.id = action.payload[i].id;
+            object.nome = action.payload[i].nome;
+            console.log("Teste", action.payload[i].nome)
+            arrayMunicipios.push(object);
+
+            console.log("Array: ", object)
         }
-        // console.log("Array: ", arrayMunicipios)
         return arrayMunicipios;
     }
 
