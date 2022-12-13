@@ -22,7 +22,7 @@ const titleDados = {
     display: "flex",
     alignItems: "center",
     paddingLeft: "0.8rem",
-    fontSize: '165%',
+    fontSize: '130%',
     color: "#0C4701",
     fontWeight: "bold"
 };
