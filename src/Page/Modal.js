@@ -43,7 +43,7 @@ const button = {
 };
 
 export const Dados = (props) => {
-    const { open, handleClose, municipioEscolhidoDados } = props;
+    const { open, handleClose, municipioEscolhidoDados, setDisabledButton } = props;
 
   return (
     <div>
@@ -75,7 +75,7 @@ export const Dados = (props) => {
                 display="flex"
                 justifyContent="flex-end"
                 style={{height: "40%", marginRight: "3%"}}>
-                <button style={button} onClick={handleClose}>OK</button>
+                <button style={button} onClick={() => {setDisabledButton(true); handleClose()}}>OK</button>
             </Grid>
           </Grid>
         </Box>

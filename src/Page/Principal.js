@@ -84,6 +84,7 @@ export const  Principal = () => {
     const [ufs, setUfs] = useState([]);
     const [cidade, setCidades] = useState([]);
     const [disabledSelect, setDisabledSelect] = useState(true);
+    const [disabledButton, setDisabledButton] = useState(true);
     const [ufSelecionada, setUfSelecionada] = useState("");
     const [municipioSelecionado, setmunicipioSelecionado] = useState("");
     const [dadosSelecionado, setDadosMunicipio] = useState("");
@@ -107,6 +108,7 @@ export const  Principal = () => {
         .catch((error) => {
             console.log(error);
         });
+        setDisabledButton(false)
     }
     
     const municipiosAssociados = async () => {
@@ -168,11 +170,11 @@ export const  Principal = () => {
                     </Grid>
                 </Grid>
                 <Grid item style={buttonConsultar}>
-                    <button style={button} onClick={() => {handleOpenModal(); dispatch(MunicipiosDados(dadosSelecionado))}}>Consultar</button>
+                    <button style={button} onClick={() => {handleOpenModal(); dispatch(MunicipiosDados(dadosSelecionado))}} disabled={disabledButton === true ? true: false}>Consultar</button>
                 </Grid>
             </Grid>
         </Grid>
-        <Dados open={openModal} handleClose={handleCloseModal} municipioEscolhidoDados={municipioEscolhidoDados}/>
+        <Dados open={openModal} handleClose={handleCloseModal} municipioEscolhidoDados={municipioEscolhidoDados} setDisabledButton={setDisabledButton}/>
     </Grid>
   );
 }
