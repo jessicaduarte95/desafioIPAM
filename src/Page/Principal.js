@@ -133,48 +133,50 @@ export const  Principal = () => {
     }, []);
 
   return (
-    <Grid  container style={containerStyle}>
-        <Grid item sm={12} style={titlePrincipal}>
-            IPAM
-        </Grid>
-        <Grid item sm={12} style={SecondPart}>
-            <Grid item style={ThirdPart}>
-                <Typography style={titleConsulta}>Consulta de dados</Typography>
-                <Typography style={textConsulta}>
-                    Caso queira consultar dados relativos a um município, selecione 
-                    um estado e um município abaixo.
-                </Typography>
-                <Grid 
-                    container
-                    item
-                    direction="column"
-                    justifyContent="center"
-                    style={{marginLeft: "0.8rem"}}>
-                    <Grid style={{width: '45%'}}>
-                        <Typography style={titleEstadoMunicipio}>Estado</Typography>
-                        <select name="uf" id="uf" style={selectEstadoMunicipio}  onChange={(e) => ufAlterada(e.target.value)} onClick={() => {municipiosAssociados(); dispatch(Municipios(cidade))}}>
-                            <option value="0"></option>
-                            {ufs.map(uf => (
-                                <option key={uf.id} value={uf.sigla}>{uf.nome}</option>
-                            ))}
-                        </select>
+    <form>
+        <Grid  container style={containerStyle}>
+            <Grid item sm={12} style={titlePrincipal}>
+                IPAM
+            </Grid>
+            <Grid item sm={12} style={SecondPart}>
+                <Grid item style={ThirdPart}>
+                    <Typography style={titleConsulta}>Consulta de dados</Typography>
+                    <Typography style={textConsulta}>
+                        Caso queira consultar dados relativos a um município, selecione 
+                        um estado e um município abaixo.
+                    </Typography>
+                    <Grid 
+                        container
+                        item
+                        direction="column"
+                        justifyContent="center"
+                        style={{marginLeft: "0.8rem"}}>
+                        <Grid style={{width: '45%'}}>
+                            <Typography style={titleEstadoMunicipio}>Estado</Typography>
+                            <select name="uf" id="uf" style={selectEstadoMunicipio}  onChange={(e) => ufAlterada(e.target.value)} onClick={() => {municipiosAssociados(); dispatch(Municipios(cidade))}}>
+                                <option value="0"></option>
+                                {ufs.map(uf => (
+                                    <option key={uf.id} value={uf.sigla}>{uf.nome}</option>
+                                ))}
+                            </select>
+                        </Grid>
+                        <Grid style={{width: '45%'}}>
+                            <Typography style={titleEstadoMunicipio}>Município</Typography>
+                            <select name="municipio" style={selectEstadoMunicipio} id="municipio" onChange={(e) => municipioAlterado(e.target.value)} disabled={disabledSelect === true ? true: false}  onClick={() => {dispatch(Municipios(cidade)); municipioSelecionadoDados()}}>
+                                <option value="0"></option>
+                                {Array.isArray(municipiosRelacionados) ? municipiosRelacionados.map(municipio => (
+                                    <option value={municipio.id} key={municipio.id}>{municipio.nome}</option>
+                                )): []}
+                            </select>
+                        </Grid>
                     </Grid>
-                    <Grid style={{width: '45%'}}>
-                        <Typography style={titleEstadoMunicipio}>Município</Typography>
-                        <select name="municipio" style={selectEstadoMunicipio} id="municipio" onChange={(e) => municipioAlterado(e.target.value)} disabled={disabledSelect === true ? true: false}  onClick={() => {dispatch(Municipios(cidade)); municipioSelecionadoDados()}}>
-                            <option value="0"></option>
-                            {Array.isArray(municipiosRelacionados) ? municipiosRelacionados.map(municipio => (
-                                <option value={municipio.id} key={municipio.id}>{municipio.nome}</option>
-                            )): []}
-                        </select>
+                    <Grid item style={buttonConsultar}>
+                        <button type="reset" style={button} onClick={() => {handleOpenModal(); dispatch(MunicipiosDados(dadosSelecionado)); setDisabledSelect(true)}} disabled={disabledButton === true ? true: false}>Consultar</button>
                     </Grid>
-                </Grid>
-                <Grid item style={buttonConsultar}>
-                    <button style={button} onClick={() => {handleOpenModal(); dispatch(MunicipiosDados(dadosSelecionado))}} disabled={disabledButton === true ? true: false}>Consultar</button>
                 </Grid>
             </Grid>
+            <Dados open={openModal} handleClose={handleCloseModal} municipioEscolhidoDados={municipioEscolhidoDados} setDisabledButton={setDisabledButton}/>
         </Grid>
-        <Dados open={openModal} handleClose={handleCloseModal} municipioEscolhidoDados={municipioEscolhidoDados} setDisabledButton={setDisabledButton}/>
-    </Grid>
+    </form>
   );
 }
