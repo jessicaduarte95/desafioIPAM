@@ -46,40 +46,38 @@ export const Dados = (props) => {
     const { open, handleClose, municipioEscolhidoDados, setDisabledButton } = props;
 
   return (
-    <div>
-      <Modal
-        open={open}
-        onClose={handleClose}
-        aria-labelledby="modal-Dados"
-        aria-describedby="modal-DadosMunicipio"
-      >
-        <Box sx={style}>
-          <Typography style={titleDados}>
-            Dados do Município {municipioEscolhidoDados[4]}
-          </Typography>
-          <Grid container>
-            <Grid 
-                item
-                direction="column"
-                display="flex"
-                justifyContent="space-around"
-                style={{height: "60%"}}
-                >
-                <Typography style={styleDados}>Microrregião: {municipioEscolhidoDados[0]}</Typography>
-                <Typography style={styleDados}>Mesorregião: {municipioEscolhidoDados[1]}</Typography>
-                <Typography style={styleDados}>UF: {municipioEscolhidoDados[2]}</Typography>
-                <Typography style={styleDados}>Região: {municipioEscolhidoDados[3]}</Typography>
-            </Grid>
-            <Grid 
-                item 
-                display="flex"
-                justifyContent="flex-end"
-                style={{height: "40%", marginRight: "3%"}}>
-                <button style={button} onClick={() => {setDisabledButton(true); handleClose()}}>OK</button>
-            </Grid>
+    <Modal
+      open={open}
+      onClose={handleClose}
+      aria-labelledby="modal-Dados"
+      aria-describedby="modal-DadosMunicipio"
+    >
+      <Box sx={style}>
+        <Typography style={titleDados}>
+          Dados do Município {municipioEscolhidoDados[4]}
+        </Typography>
+        <Grid container>
+          <Grid 
+              item
+              direction="column"
+              display="flex"
+              justifyContent="space-around"
+              style={{height: "60%"}}
+              >
+              <Typography style={styleDados}>Microrregião: {municipioEscolhidoDados[0]}</Typography>
+              <Typography style={styleDados}>Mesorregião: {municipioEscolhidoDados[1]}</Typography>
+              <Typography style={styleDados}>UF: {municipioEscolhidoDados[2]}</Typography>
+              <Typography style={styleDados}>Região: {municipioEscolhidoDados[3]}</Typography>
           </Grid>
-        </Box>
-      </Modal>
-    </div>
+          <Grid 
+              item 
+              display="flex"
+              justifyContent="flex-end"
+              style={{height: "40%", marginRight: "3%"}}>
+              <button style={button} onClick={() => {setDisabledButton(true); handleClose()}}>OK</button>
+          </Grid>
+        </Grid>
+      </Box>
+    </Modal>
   );
 }
