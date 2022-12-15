@@ -19,7 +19,6 @@
 
 O projeto tinha como objetivo criar um select para selecionar um estado e um select para selecionar um município, sendo que no select do município deveria aparecer  somente os municípios associados ao estado selecionado, após isto, deveria ser disponibilizado os dados relativos ao município.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
 
 ### Funcionalidades
 
