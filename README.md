@@ -1,5 +1,16 @@
 <h1 align="center"> Sistema para Fornecer Dados de um Município </h1>
 
+## Bibliotecas Usadas
+
+
+### `Material UI`
+
+### `Axios`
+
+### `Redux`
+
+### `React-Redux`
+
 
 ## Bibliotecas Usadas
 
