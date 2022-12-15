@@ -15,7 +15,7 @@
 **Note: this is a one-way operation. Once you `eject`, you can't go back!**
 
 
-## Learn More
+## Apresentação do Projeto
 
 You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
