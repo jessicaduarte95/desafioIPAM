@@ -3,7 +3,6 @@
 
 ## Bibliotecas Usadas
 
-In the project directory, you can run:
 
 ### `Material UI`
 
