@@ -38,7 +38,10 @@ Página Inicial:
 ![Imagem1](https://user-images.githubusercontent.com/87327538/207986439-5373901e-8bc6-4215-8c71-acc665b32069.PNG)
 
 Para selecionar um estado, o botão de consulta e o select do município fica desabilitado.
+
 Select do estado:
+
+![Imagem2](https://user-images.githubusercontent.com/87327538/207986635-6834b72c-9178-45eb-9069-c01839693195.png)
 
 Select do município associado ao estado selecionado:
 
