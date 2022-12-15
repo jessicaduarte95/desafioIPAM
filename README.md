@@ -1,6 +1,5 @@
 <h1 align="center"> Sistema para fornecer dados de um município </h1>
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Bibliotecas Usadas
 
