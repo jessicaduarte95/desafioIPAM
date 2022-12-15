@@ -51,7 +51,7 @@ Ao clicar em consultar aparecerá os dados relacionados ao município selecionad
 
 ![Imagem4](https://user-images.githubusercontent.com/87327538/207986855-9a1fc8dd-2931-484c-a188-2f6d52026bec.PNG)
 
-### Analyzing the Bundle Size
+### Desenvolvedor
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
 <img src="https://avatars.githubusercontent.com/u/37356058?v=4" width=115><br><sub>Camila Fernanda Alves</sub>](https://github.com/jessicaduarte95)
