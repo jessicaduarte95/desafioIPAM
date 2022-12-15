@@ -53,4 +53,4 @@ Ao clicar em consultar aparecerá os dados relacionados ao município selecionad
 
 ### Desenvolvedor
 
-<img src="https://avatars.githubusercontent.com/u/37356058?v=4" width=115><br><sub>Jéssica Carvalho Duarte</sub>](https://github.com/jessicaduarte95)
+Jéssica Carvalho Duarte
