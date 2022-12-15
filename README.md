@@ -23,7 +23,7 @@
 
 ### `React-Redux`
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+**Rodar o Projeto: npm start**
 
 
 ## Apresentação do Projeto
