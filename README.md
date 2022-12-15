@@ -22,7 +22,7 @@ O projeto tinha como objetivo criar um select para selecionar um estado e um sel
 
 ### Funcionalidades
 
-O projeto tinha como objetivo 
+Página Inicial
 
 ### Analyzing the Bundle Size
 
