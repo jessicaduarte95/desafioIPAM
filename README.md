@@ -22,7 +22,14 @@ O projeto tinha como objetivo criar um select para selecionar um estado e um sel
 
 ### Funcionalidades
 
-Página Inicial
+Página Inicial:
+
+Para selecionar um estado, o botão de consulta e o select do município fica desabilitado.
+Select do estado:
+
+Select do município associado ao estado selecionado:
+
+Ao clicar em consultar aparecerá os dados relacionados ao município selecionado:
 
 ### Analyzing the Bundle Size
 
