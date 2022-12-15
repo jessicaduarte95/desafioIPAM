@@ -35,6 +35,8 @@ O projeto tinha como objetivo criar um select para selecionar um estado e um sel
 
 Página Inicial:
 
+![Imagem1](https://user-images.githubusercontent.com/87327538/207986439-5373901e-8bc6-4215-8c71-acc665b32069.PNG)
+
 Para selecionar um estado, o botão de consulta e o select do município fica desabilitado.
 Select do estado:
 
